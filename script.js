@@ -1,8 +1,8 @@
-let inputDisplay = document.querySelector('.input');
-let outputDisplay = document.querySelector('.output');
-let currentInput = '';
-let result = 0;
-let calculatorOn = false;
+var inputDisplay = document.querySelector('.input');
+var outputDisplay = document.querySelector('.output');
+var currentInput = '';
+var result = '';
+var calculatorOn = false;
 
 function turnOn() {
   calculatorOn = true;
@@ -43,28 +43,21 @@ function clearDisplay() {
   if (calculatorOn) {
     currentInput = '';
     inputDisplay.textContent = '';
+    outputDisplay.textContent = '';
   }
 }
 
 function deleteLast() {
   if (calculatorOn) {
     currentInput = currentInput.slice(0, -1);
-    inputDisplay.textContent = currentInput;
-  }
-}
-
-function useAns() {
-  if (calculatorOn) {
-    currentInput += result;
-    inputDisplay.textContent = currentInput;
-  }
+    inputDisplay.textContent = currentInput || '\u00A0';  }
 }
 
 function calculate() {
   if (calculatorOn) {
     try {
       currentInput = currentInput.replace(/\b0+(\d+)/g, '$1');
-      let result = eval(currentInput);
+      result = eval(currentInput);
       outputDisplay.textContent = result;
       result = result;
     } catch (error) {
@@ -75,6 +68,12 @@ function calculate() {
 function appendBracket(bracket) {
   if (calculatorOn) {
     currentInput += bracket;
+    inputDisplay.textContent = currentInput;
+  }
+}
+function useAns() {
+  if (calculatorOn) {
+    currentInput += result;
     inputDisplay.textContent = currentInput;
   }
 }
