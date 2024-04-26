@@ -45,7 +45,7 @@ body{
   transition: background-color 0.3s ease;
 }
 .display {
-  height: 90px;
+  height: 100px;
   overflow-y: auto;
   padding: 10px;
   border: 1px solid #ccc;
